@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../master_code/dev_code/day_logger"
+		}
+	],
+	"settings": {
+		"bitoAI.codeCompletion.enableAutoCompletion": false
+	}
+}

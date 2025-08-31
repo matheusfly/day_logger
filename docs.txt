@@ -1,0 +1,27 @@
+
+
+
+
+
+''''To create a program that formats folders and files
+according to the structure shown in your screenshot, 
+I will draft a system to organize the files based on your specifications. 
+Here's how the structure will be handled, considering the timestamp and labels:
+
+
+### **Folder Structure**
+1. **Root Output_Folder:** `work-logs/2024`
+2. *
+*Subfolders:**
+   - **Daily:** Includes daily logs in the format `ddd-DD-MM-YY/` (e.g., `Mon-02-12-24/`).
+   - **Monthly:** Contains a folder for each month in the format `YY-MM/` (e.g., `24-12/`).
+   - **Weekly:** Weekly logs are organized in the format `[w]ww-MM-dd/` (e.g., `[w]49-12-02/`).
+
+
+
+### **Program Workflow**
+1. Parse the timestamp of each file.
+2. Create folders dynamically based on the structure.
+3. Save files into their respective folders.
+''''
+

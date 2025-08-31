@@ -1,0 +1,58 @@
+{
+  "spots": [
+    {
+      "name": "sonhos",
+      "children": [
+        {
+          "name": "eatwg",
+          "title": "",
+          "description": "",
+          "start_date": "2025-07-01",
+          "end_date": "2025-10-01",
+          "supervision_frequency": "Quarterly",
+          "children": []
+        },
+        {
+          "name": "AWRE",
+          "title": "",
+          "description": "",
+          "start_date": "",
+          "end_date": "",
+          "supervision_frequency": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "metas",
+      "children": [
+        {
+          "name": "WEGw",
+          "dream_id": 2,
+          "title": "",
+          "description": "",
+          "start_date": "",
+          "end_date": "",
+          "supervision_frequency": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "objetivos",
+      "children": [
+        {
+          "name": "eWFAERGBA",
+          "title": "",
+          "description": "",
+          "metas_id": 1,
+          "start_date": "2025-06-10",
+          "end_date": "2025-06-17",
+          "week_number": "",
+          "children": [],
+          "supervision_frequency": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+Block: Morning Tasks
+Time: 01:00 - 02:00
+Content:
+asjdgbasidfbaçsidbfaks
+----------------------------------------
+Block: Mid-Day Tasks
+Time: 03:00 - 10:00
+Content:
+asdfnasçdikfubasdfh
+----------------------------------------
+Block: Evening Tasks
+Time: 10:00 - 03:00
+Content:
+sadfhasçofhaosdiajfoaishf
+----------------------------------------
+Block: Morning Tasks
+Time: 03:00 - 04:00
+Content:
+kasjydvcfaukwybefoauw
+----------------------------------------
+Block: Mid-Day Tasks
+Time: 05:00 - 06:00
+Content:
+ckajyhvfgalsjhdfb
+----------------------------------------
+Block: Evening Tasks
+Time: 07:00 - 08:00
+Content:
+asdfhbaskfl,asfbjn.a
+----------------------------------------
