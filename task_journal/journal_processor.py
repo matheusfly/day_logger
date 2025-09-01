@@ -95,3 +95,41 @@ class JournalProcessor:
             return success, message
         except Exception as e:
             return False, f"Error processing journal: {str(e)}"
+
+    def process_and_save_journal_from_data(self, data: Dict[str, Any]) -> tuple[bool, str]:
+        """
+        Main method to build TimeBlock objects from raw entry data,
+        then save them in daily text files via JournalDataManager.
+        This method is intended to be used when data is passed directly, e.g. from an API.
+        """
+        try:
+            # Data is expected to have a "time_blocks" key.
+            time_blocks = self.build_timeblocks(data)
+
+            # Use the data manager to save daily time blocks
+            success, message = self.data_manager.save_daily_timeblocks(time_blocks)
+            return success, message
+        except Exception as e:
+            return False, f"Error processing journal: {str(e)}"
+
+if __name__ == "__main__":
+    import sys
+    import json
+
+    if len(sys.argv) > 1:
+        json_data = sys.argv[1]
+        try:
+            data = json.loads(json_data)
+            # The data from the frontend is the value for "time_blocks".
+            # I need to wrap it.
+            entry_data = {"time_blocks": data}
+
+            processor = JournalProcessor()
+            success, message = processor.process_and_save_journal_from_data(entry_data)
+            print(json.dumps({"success": success, "message": message}))
+        except json.JSONDecodeError:
+            print(json.dumps({"success": False, "message": "Invalid JSON format"}))
+        except Exception as e:
+            print(json.dumps({"success": False, "message": f"An error occurred: {e}"}))
+    else:
+        print(json.dumps({"success": False, "message": "No data provided"}))

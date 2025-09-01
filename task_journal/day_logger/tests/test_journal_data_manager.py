@@ -5,6 +5,7 @@ Covers JournalDataManager's functionality with temporary directories for clean t
 
 import pytest
 import os
+import json
 from datetime import datetime
 from day_logger.journal_data_manager import JournalDataManager
 
@@ -88,7 +89,7 @@ def test_save_daily_timeblocks_new_file(data_manager, tmp_path):
     assert "Time blocks saved successfully" in message
     
     # Check the created file
-    expected_file = tmp_path / "work-logs/2025/daily/2025-02-15.json"
+    expected_file = tmp_path / "2025/daily/2025-02-15.json"
     assert expected_file.exists()
     
     with open(expected_file, 'r', encoding='utf-8') as f:
@@ -107,7 +108,7 @@ def test_save_daily_timeblocks_merge_existing(data_manager, tmp_path):
     from day_logger.models.timeblock import TimeBlock
     
     test_date = datetime(2025, 2, 15, 10, 30)
-    daily_path = tmp_path / "work-logs/2025/daily"
+    daily_path = tmp_path / "2025/daily"
     daily_path.mkdir(parents=True, exist_ok=True)
     
     # Create initial file with one block

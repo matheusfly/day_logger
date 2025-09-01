@@ -9,7 +9,20 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MockOrchestrator } from "@/lib/mock-orchestrator";
 import { NLPTask, MLOpsMetrics } from "@/types/ai";
+import Link from 'next/link';
 import { Brain, Activity, BarChart3, Settings, RefreshCw } from "lucide-react";
+
+declare global {
+  interface Window {
+    electron: {
+      ipcRenderer: {
+        sendMessage: (channel: string, args?: unknown[]) => void;
+        on: (channel: string, func: (...args: unknown[]) => void) => () => void;
+        once: (channel: string, func: (...args: unknown[]) => void) => void;
+      };
+    };
+  }
+}
 
 export default function Home() {
   const [tasks, setTasks] = useState<NLPTask[]>([]);
@@ -95,6 +108,23 @@ export default function Home() {
     // You could show this in a toast or modal
   };
 
+  const runPython = () => {
+    if (window.electron) {
+      window.electron.ipcRenderer.sendMessage('run-python-script');
+    }
+  };
+
+  useEffect(() => {
+    if (window.electron) {
+        const removeListener = window.electron.ipcRenderer.on('python-script-reply', (message) => {
+            console.log('Received from main:', message);
+        });
+        return () => {
+            removeListener();
+        };
+    }
+  }, []);
+
   const completedTasks = tasks.filter(t => t.status === 'completed').length;
   const errorTasks = tasks.filter(t => t.status === 'error').length;
   const processingTasks = tasks.filter(t => t.status === 'processing').length;
@@ -126,6 +156,14 @@ export default function Home() {
                 <RefreshCw className="h-4 w-4 mr-2" />
                 Clear All
               </Button>
+              <Button variant="outline" size="sm" onClick={runPython}>
+                Run Python
+              </Button>
+              <Link href="/logger">
+                <Button variant="outline" size="sm">
+                  Go to Logger
+                </Button>
+              </Link>
             </div>
           </div>
           

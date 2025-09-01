@@ -135,14 +135,14 @@ class JournalDataManager:
             (bool, str): A tuple containing a success flag and a message.
         """
         try:
-            from pathlib import Path
-            daily_path = Path('work-logs/2025/daily')
-            daily_path.mkdir(parents=True, exist_ok=True)
-            
             if not blocks:
                 return False, "No blocks to save."
-            
-            date_str = blocks[0].date.strftime("%Y-%m-%d")
+
+            date_obj = blocks[0].date
+            daily_path = self.base_path / str(date_obj.year) / 'daily'
+            daily_path.mkdir(parents=True, exist_ok=True)
+
+            date_str = date_obj.strftime("%Y-%m-%d")
             filename = f"{date_str}.json"
             file_path = daily_path / filename
             
